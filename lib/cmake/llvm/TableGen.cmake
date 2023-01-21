@@ -156,13 +156,7 @@ macro(add_tablegen target project)
     ${ADD_TABLEGEN_UNPARSED_ARGUMENTS})
   set(LLVM_LINK_COMPONENTS ${${target}_OLD_LLVM_LINK_COMPONENTS})
 
-  set(${project}_TABLEGEN_DEFAULT "${target}")
-  if (LLVM_NATIVE_TOOL_DIR)
-    if (EXISTS "${LLVM_NATIVE_TOOL_DIR}/${target}${LLVM_HOST_EXECUTABLE_SUFFIX}")
-      set(${project}_TABLEGEN_DEFAULT "${LLVM_NATIVE_TOOL_DIR}/${target}${LLVM_HOST_EXECUTABLE_SUFFIX}")
-    endif()
-  endif()
-  set(${project}_TABLEGEN "${${project}_TABLEGEN_DEFAULT}" CACHE
+  set(${project}_TABLEGEN "${target}" CACHE
       STRING "Native TableGen executable. Saves building one when cross-compiling.")
 
   # Effective tblgen executable to be used:
@@ -196,8 +190,7 @@ macro(add_tablegen target project)
     endif()
   endif()
 
-  if (ADD_TABLEGEN_DESTINATION AND NOT LLVM_INSTALL_TOOLCHAIN_ONLY AND
-      (LLVM_BUILD_UTILS OR ${target} IN_LIST LLVM_DISTRIBUTION_COMPONENTS))
+  if (ADD_TABLEGEN_DESTINATION AND NOT LLVM_INSTALL_TOOLCHAIN_ONLY AND LLVM_BUILD_UTILS)
     set(export_arg)
     if(ADD_TABLEGEN_EXPORT)
       get_target_export_arg(${target} ${ADD_TABLEGEN_EXPORT} export_arg)

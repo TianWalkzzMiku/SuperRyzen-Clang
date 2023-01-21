@@ -244,16 +244,6 @@ set_target_properties(clangToolingInclusions PROPERTIES
 list(APPEND _cmake_import_check_targets clangToolingInclusions )
 list(APPEND _cmake_import_check_files_for_clangToolingInclusions "${_IMPORT_PREFIX}/lib/libclangToolingInclusions.a" )
 
-# Import target "clangToolingInclusionsStdlib" for configuration "Release"
-set_property(TARGET clangToolingInclusionsStdlib APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(clangToolingInclusionsStdlib PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libclangToolingInclusionsStdlib.a"
-  )
-
-list(APPEND _cmake_import_check_targets clangToolingInclusionsStdlib )
-list(APPEND _cmake_import_check_files_for_clangToolingInclusionsStdlib "${_IMPORT_PREFIX}/lib/libclangToolingInclusionsStdlib.a" )
-
 # Import target "clangToolingRefactoring" for configuration "Release"
 set_property(TARGET clangToolingRefactoring APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(clangToolingRefactoring PROPERTIES
@@ -487,15 +477,6 @@ set_target_properties(clang-repl PROPERTIES
 list(APPEND _cmake_import_check_targets clang-repl )
 list(APPEND _cmake_import_check_files_for_clang-repl "${_IMPORT_PREFIX}/bin/clang-repl" )
 
-# Import target "clang-stat-cache" for configuration "Release"
-set_property(TARGET clang-stat-cache APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(clang-stat-cache PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/clang-stat-cache"
-  )
-
-list(APPEND _cmake_import_check_targets clang-stat-cache )
-list(APPEND _cmake_import_check_files_for_clang-stat-cache "${_IMPORT_PREFIX}/bin/clang-stat-cache" )
-
 # Import target "clang-rename" for configuration "Release"
 set_property(TARGET clang-rename APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(clang-rename PROPERTIES
@@ -528,29 +509,11 @@ list(APPEND _cmake_import_check_files_for_clang-cpp "${_IMPORT_PREFIX}/lib/libcl
 set_property(TARGET libclang APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(libclang PROPERTIES
   IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libclang.so.16.0.0git"
-  IMPORTED_SONAME_RELEASE "libclang.so.16git"
+  IMPORTED_SONAME_RELEASE "libclang.so.16"
   )
 
 list(APPEND _cmake_import_check_targets libclang )
 list(APPEND _cmake_import_check_files_for_libclang "${_IMPORT_PREFIX}/lib/libclang.so.16.0.0git" )
-
-# Import target "amdgpu-arch" for configuration "Release"
-set_property(TARGET amdgpu-arch APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(amdgpu-arch PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/amdgpu-arch"
-  )
-
-list(APPEND _cmake_import_check_targets amdgpu-arch )
-list(APPEND _cmake_import_check_files_for_amdgpu-arch "${_IMPORT_PREFIX}/bin/amdgpu-arch" )
-
-# Import target "nvptx-arch" for configuration "Release"
-set_property(TARGET nvptx-arch APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(nvptx-arch PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/nvptx-arch"
-  )
-
-list(APPEND _cmake_import_check_targets nvptx-arch )
-list(APPEND _cmake_import_check_files_for_nvptx-arch "${_IMPORT_PREFIX}/bin/nvptx-arch" )
 
 # Commands beyond this point should not need to know the version.
 set(CMAKE_IMPORT_FILE_VERSION)

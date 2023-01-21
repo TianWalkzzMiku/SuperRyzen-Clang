@@ -41,7 +41,6 @@ from __future__ import absolute_import, division, print_function
 
 import difflib
 import json
-import os.path
 import platform
 import subprocess
 import sys
@@ -77,8 +76,7 @@ def main():
   # Determine range to format.
   if vim.eval('exists("l:lines")') == '1':
     lines = ['-lines', vim.eval('l:lines')]
-  elif vim.eval('exists("l:formatdiff")') == '1' and \
-       os.path.exists(vim.current.buffer.name):
+  elif vim.eval('exists("l:formatdiff")') == '1':
     with open(vim.current.buffer.name, 'r') as f:
       ondisk = f.read().splitlines();
     sequence = difflib.SequenceMatcher(None, ondisk, vim.current.buffer)
