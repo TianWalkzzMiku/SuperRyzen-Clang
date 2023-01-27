@@ -1,2 +1,0 @@
-libclang-cpp.so filter=lfs diff=lfs merge=lfs -text
-libclang-cpp.so.16git filter=lfs diff=lfs merge=lfs -text
